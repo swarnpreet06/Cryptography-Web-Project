@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Decryption Service</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+  body {
+    background-image: url("https://elevenews.com/wp-content/uploads/2018/03/Bitbank-Adds-New-Cryptocurrency-To-Their-Platform.jpg");
+  }
+
+  .a {
+    color: white;
+    font-weight: bolder;
+    font-size: 28px;
+    text-decoration: underline;
+  }
+</style>
+
+<body>
+  <p id="homeLink"><a class="a" href="hill-cipher.html">Home</a></p>
+  <p id="encryptLink"><a class="a" href="encrypt.html">Encrypt</a></p>
+  <h1>Hill Cipher</h1>
+
+
+  <div id="inSec">
+    <div id="decForm">
+      <p id="inputC">Ciphertext</p><br>
+      <textarea id="textC" name="cipherM"></textarea>
+      <button id="decButton" type="button">Decrypt</button>
+    </div>
+  </div>
+  <pre id="decT"></pre>
+
+  <script src="scripts/util.js"></script>
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/decrypt.js"></script>
+</body>
+
+</html>

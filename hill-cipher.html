@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hill Cipher</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+  body {
+    background-image: url("https://elevenews.com/wp-content/uploads/2018/03/Bitbank-Adds-New-Cryptocurrency-To-Their-Platform.jpg");
+  }
+
+  h1 {
+    font-size: 60px;
+    font-weight: bold;
+    font-style: oblique;
+    margin-left: 41%;
+  }
+
+  .container {
+    margin-left: 44%;
+  }
+
+  #m33 {
+    margin-left: 30%;
+  }
+</style>
+
+<body>
+  <h1>Hill Cipher</h1>
+
+  <div class="container">
+    <div id="inSec">
+      <p id="inputTM">Choose Key Matrix </p><br>
+      <div id="EDMenu">
+        <button id="enhButton0" type="button">Encrypt</button>
+        <button id="dehButton0" type="button">Decrypt</button>
+      </div>
+
+
+      <select id="choice">
+        <option value="m22">2 X 2 Matrix</option>
+        <option value="m33">3 X 3 Matrix</option>
+      </select>
+
+      <form id="m22">
+        <input id="tw0" type="number" name="index" min="0" max="25">
+        <input id="tw1" type="number" name="index" min="0" max="25"> <br />
+        <input id="tw2" type="number" name="index" min="0" max="25">
+        <input id="tw3" type="number" name="index" min="0" max="25">
+      </form>
+
+
+      <form id="m33">
+        <input id="tr0" type="number" name="index" min="0" max="25">
+        <input id="tr1" type="number" name="index" min="0" max="25">
+        <input id="tr2" type="number" name="index" min="0" max="25">
+        <input id="tr3" type="number" name="index" min="0" max="25">
+        <input id="tr4" type="number" name="index" min="0" max="25">
+        <input id="tr5" type="number" name="index" min="0" max="25">
+        <input id="tr6" type="number" name="index" min="0" max="25">
+        <input id="tr7" type="number" name="index" min="0" max="25">
+        <input id="tr8" type="number" name="index" min="0" max="25">
+      </form>
+
+      <button id="subButtonH" type="button">Submit</button><br>
+
+    </div>
+  </div>
+
+  <!-- need to use "strip" function in encrypt.js -->
+  <script src="scripts/util.js"></script>
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+
+</html>

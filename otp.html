@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<style>
+    body 
+    {
+        background-image:url("https://elevenews.com/wp-content/uploads/2018/03/Bitbank-Adds-New-Cryptocurrency-To-Their-Platform.jpg");
+        
+    }
+    p 
+    {
+        color:white;
+    }
+    h1 
+    {
+        color:white;
+        margin-left:37%;
+    }
+    
+
+</style>
+<body>
+    <h1>ONE TIME PADDING</h1>
+<section class="section3">
+    <div class="container">
+        <p>
+            The one-time pad (OTP) is a theoretically unbreakable cipher. However, in practice it is of limited usability because it requires a 
+            pre-shared key of at least the same length as the message. Generating truly random keys and pre-sharing them securely are challenging 
+            problems. This tool helps you encode or decode one-time pads if you have the key.
+        </p>
+        <p id="ad" class="text-center d-none">
+        <a href="/" id="adlink" class="tgt-ad greentext-link font-weight-bold">
+        -&gt; Try your skills on Boxentriq's puzzles. Click here. &lt;-
+        </a>
+        </p>
+        
+        <div class="jumbotron">
+            <h2 id="one-time-pad">One-time pad</h2>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-dark active">
+                    <input type="radio" name="options" id="encryptbtn" autocomplete="off" onchange="updateTexts();" checked> Encrypt
+                </label>
+                <label class="btn btn-dark">
+                    <input type="radio" name="options" id="decryptbtn" autocomplete="off" onchange="updateTexts();"> Decrypt
+                </label>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control text-monospace" rows="4" id="srctext" oninput="updateTexts();" spellcheck="false" placeholder="Type the plaintext here..."></textarea>
+                <button class="btn btn-success mt-1" onclick="clearText();">Clear</button>
+                
+            </div>
+
+            <label for="plaintext" class="h3" id="resultlabel">Result</label>
+            <textarea class="form-control text-monospace" rows="3" id="resulttext" spellcheck="false" readonly></textarea>
+
+            <div class="form-group">
+                <label for="encryptionkey" class="h4">Encryption key</label>
+                <textarea class="form-control text-monospace" rows="4" id="encryptionkey" oninput="updateTexts();" spellcheck="false" placeholder="Type the key here. To avoid truncation, the key must be at least as long as the plaintext."></textarea>
+            </div>
+
+            <div id="options" class="form-group collapse">
+                <label for="alphabet" class="h4">Alphabet</label>
+                <input class="form-control" id="alphabet" type="text" style="max-width: 30em;" oninput="updateTexts()" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ" placeholder="Enter alphabet here" />
+            </div>
+        </div>
+</section>
+<script>
+    updateTexts();
+
+    function clearText() {
+        document.getElementById("srctext").value = '';
+        document.getElementById("resulttext").value = '';
+    }
+
+    function encrypt() {
+        var src = document.getElementById("srctext").value;
+        document.getElementById("resulttext").value = transform(src, true);
+    }
+
+    function decrypt() {
+        var src = document.getElementById("srctext").value;
+        document.getElementById("resulttext").value = transform(src, false);
+    }
+
+    function transform(src, flag) {
+        var alphabet = document.getElementById("alphabet").value.toUpperCase();
+        var key = document.getElementById("encryptionkey").value.toUpperCase();
+
+        if (key.length == 0)
+            return '';
+
+        key = key.split('').filter(c => alphabet.indexOf(c) != -1).join('');
+        var dst = '';
+
+        for (var i = 0; i < src.length; i++) {
+            if (alphabet.indexOf(src[i].toUpperCase()) != -1) {
+                if (i >= key.length) {
+                    dst += '***TRUNCATED***';
+                    break;
+                }
+
+                var charCode = flag ? (alphabet.indexOf(src[i].toUpperCase()) + alphabet.indexOf(key[i])) % alphabet.length :
+                    (alphabet.indexOf(src[i].toUpperCase()) - alphabet.indexOf(key[i]) + alphabet.length) % alphabet.length;
+                var ch = alphabet[charCode];
+                if (src[i] >= 'a')
+                    ch = ch.toLowerCase();
+                dst += ch;
+            }
+        }
+
+        return dst;
+    }
+
+    function updateTexts() {
+        if (document.getElementById("encryptbtn").checked)
+            encrypt();
+        else
+            decrypt();
+    }
+</script>
+</body>
+</html>
